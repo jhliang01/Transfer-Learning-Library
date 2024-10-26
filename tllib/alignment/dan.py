@@ -85,7 +85,7 @@ class MultipleKernelMaximumMeanDiscrepancy(nn.Module):
         # Add 2 / (n-1) to make up for the value on the diagonal
         # to ensure loss is positive in the non-linear version
         loss = (kernel_matrix * self.index_matrix).sum() + 2. / float(batch_size - 1)
-
+        loss = loss.clone()
         return loss
 
 
